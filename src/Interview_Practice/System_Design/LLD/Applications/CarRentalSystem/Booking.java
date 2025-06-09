@@ -2,6 +2,7 @@ package Interview_Practice.System_Design.LLD.Applications.CarRentalSystem;
 
 import Interview_Practice.System_Design.LLD.Applications.CarRentalSystem.Products.Payment;
 import Interview_Practice.System_Design.LLD.Applications.CarRentalSystem.Products.VehicleStatus;
+import Interview_Practice.System_Design.LLD.Applications.PricingStratagyInterface;
 
 import java.util.Date;
 
@@ -22,5 +23,14 @@ public class Booking {
         this.bookedVehicle.setVehicleStatus(VehicleStatus.Booked);
 
     }
-    //getter setter
+
+    private PricingStratagyInterface pricingStrategy;
+
+    public void setPricingStrategy(PricingStratagyInterface strategy) {
+        this.pricingStrategy = strategy;
+    }
+
+    public String calculateTotalFare(Integer durationInHours) {
+        return pricingStrategy.calcualtePrice(durationInHours);
+    }
 }
